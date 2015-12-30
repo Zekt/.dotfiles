@@ -22,14 +22,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
-
 Plug 'scrooloose/syntastic'
 " Indent
 "Plug 'nathanaelkane/vim-indent-guides'
 
 " Tools
 Plug 'scrooloose/nerdtree'
-Plug 'suan/vim-instant-markdown'
+Plug 'euclio/vim-markdown-composer'
+Plug 'bling/vim-airline'
 
 call plug#end()
 
@@ -38,7 +38,9 @@ LuciusDark
 set background=dark
 
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
 let g:lucius_no_term_bg = 1
+
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
@@ -64,6 +66,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 
 " autocmd VimEnter * NERDTree
@@ -92,4 +97,15 @@ set mouse=a
 set clipboard+=unnamedplus
 set splitbelow
 set pumheight=10
+set lazyredraw
+
+set wildmenu
+set incsearch
+set hlsearch
+set foldenable
+set foldmethod=indent
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
 
