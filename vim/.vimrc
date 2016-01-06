@@ -14,6 +14,7 @@ Plug 'Zenburn'
 Plug 'sudar/vim-arduino-syntax'
 Plug 'peterhoeg/vim-qml'
 Plug 'fatih/vim-go'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 
 " Auto complete
@@ -75,6 +76,8 @@ let g:airline_powerline_fonts = 1
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:markdown_composer_browser = "firefox"
 
 autocmd filetype c,cpp nnoremap <F5> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype python nnoremap <F5> :w <bar> exec '!python '.shellescape('%')<CR>

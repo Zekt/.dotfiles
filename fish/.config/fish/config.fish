@@ -9,7 +9,9 @@ source $OMF_PATH/init.fish
 
 tmux -2
 powerline-config tmux setup
+fish_vi_mode
 
+set default_user vik
 set -x PATH "/home/vik/.pyenv/bin" $PATH
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
@@ -27,3 +29,4 @@ alias ntuim "ssh zekt@ntu.im"
 
 alias dropbox "dropbox-cli"
 alias vim "nvim"
+bind \t\[dw backward-kill-word
