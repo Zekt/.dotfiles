@@ -3,9 +3,6 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
-
 " Colorshemes
 Plug 'Lucius'
 Plug 'Zenburn'
@@ -19,7 +16,7 @@ Plug 'pangloss/vim-javascript'
 
 " Auto complete
 Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
@@ -29,7 +26,8 @@ Plug 'scrooloose/syntastic'
 
 " Tools
 Plug 'scrooloose/nerdtree'
-Plug 'euclio/vim-markdown-composer'
+" Plug 'euclio/vim-markdown-composer'
+Plug 'suan/vim-instant-markdown'
 Plug 'bling/vim-airline'
 
 call plug#end()
@@ -38,9 +36,9 @@ color lucius
 LuciusDark
 set background=dark
 
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
 let g:lucius_no_term_bg = 1
+
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -53,6 +51,9 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333 ctermbg=237
+
+" let vim_markdown_preview_github=1
+let g:vim_markdown_preview_browser="chromium"
 
 let g:pydiction_location = '/home/vik/.vim/bundle/Pydiction/complete-dict'
 let g:jedi#completions_enabled = 1
@@ -76,8 +77,6 @@ let g:airline_powerline_fonts = 1
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:markdown_composer_browser = "firefox"
 
 autocmd filetype c,cpp nnoremap <F5> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype python nnoremap <F5> :w <bar> exec '!python '.shellescape('%')<CR>
