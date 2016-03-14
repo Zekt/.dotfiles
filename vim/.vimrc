@@ -13,6 +13,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'fatih/vim-go'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'php.vim'
 
 " Auto complete
 Plug 'mattn/emmet-vim'
@@ -111,3 +112,4 @@ set foldmethod=indent
 nnoremap j gj
 nnoremap k gk
 
+cmap w!! w !sudo tee > /dev/null %

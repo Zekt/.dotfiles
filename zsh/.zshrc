@@ -111,6 +111,7 @@ alias ntuim="ssh zekt@ntu.im"
 alias dropbox="dropbox-cli"
 alias vi="nvim"
 alias vim="nvim"
+alias svim="sudo -E nvim"
 
 if [ "$TMUX" = ""  ]; then
 	tmux -2;
