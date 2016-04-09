@@ -3,3 +3,11 @@
 	name = Viktor Lin
 [url "https://"]
 	insteadOf = git://
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	cm = commit
+	cma = commit -a
+	cmm = commit -m
+	l = log
