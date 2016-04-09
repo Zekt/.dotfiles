@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'Lucius'
 Plug 'Zenburn'
 
+Plug 'severin-lemaignan/vim-minimap'
+
 " Syntax
 Plug 'sudar/vim-arduino-syntax'
 Plug 'peterhoeg/vim-qml'
@@ -38,6 +40,8 @@ LuciusDark
 set background=dark
 
 let g:lucius_no_term_bg = 1
+
+let g:minimap_highlight='Visual'
 
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 

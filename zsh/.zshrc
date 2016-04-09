@@ -61,7 +61,6 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 plugins=(tmux)
-plugins=(zsh-syntax-highlighting)
 
 # User configuration
 
@@ -104,7 +103,7 @@ alias wifi-down="sudo ifconfig wlo1 down"
 alias connect="sudo iw dev wlo1 connect"
 alias scan="sudo iw dev wlo1 scan"
 alias dhcp="sudo dhclient wlo1"
-alias connect-peap="sudo wpa_supplicant -i wlo1 -c ~/ntupeap.conf && dhcp"
+alias connect-peap="sudo wpa_supplicant -B -i wlo1 -c ~/ntupeap.conf && dhcp -d"
 alias home="ssh vik@zekt.me"
 alias ntuosc="ssh zekt@home.ntuosc.org -p 2200"
 alias ntuim="ssh zekt@ntu.im"
@@ -112,6 +111,9 @@ alias dropbox="dropbox-cli"
 alias vi="nvim"
 alias vim="nvim"
 alias svim="sudo -E nvim"
+
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if [ "$TMUX" = ""  ]; then
 	tmux -2;
