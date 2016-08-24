@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Lucius'
 Plug 'Zenburn'
 
-Plug 'severin-lemaignan/vim-minimap'
+" Plug 'severin-lemaignan/vim-minimap'
 
 " Syntax
 Plug 'sudar/vim-arduino-syntax'
@@ -19,7 +19,7 @@ Plug 'php.vim'
 
 " Auto complete
 Plug 'mattn/emmet-vim'
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
@@ -32,6 +32,9 @@ Plug 'scrooloose/nerdtree'
 " Plug 'euclio/vim-markdown-composer'
 Plug 'suan/vim-instant-markdown'
 Plug 'bling/vim-airline'
+" Plug 'Rykka/riv.vim'
+" Plug 'Rykka/InstantRst'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
@@ -73,6 +76,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
+let g:syntastic_asm_checkers = ['nasm']
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
