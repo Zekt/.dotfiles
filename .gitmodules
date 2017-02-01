@@ -1,0 +1,6 @@
+[submodule "zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = /home/vik/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+[submodule "zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = /home/vik/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting

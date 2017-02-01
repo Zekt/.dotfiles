@@ -66,6 +66,7 @@ plugins=(tmux)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export GOPATH="/home/vik/gocode"
+export WIFIDEVICE=$(iw dev | grep -Po 'Interface \K([^\n\r]*)')
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -98,16 +99,15 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias wifi="sudo wifi-menu"
-alias wifi-up="sudo ifconfig wlo1 up"
-alias wifi-down="sudo ifconfig wlo1 down"
-alias connect="sudo iw dev wlo1 connect"
-alias scan="sudo iw dev wlo1 scan"
-alias dhcp="sudo dhclient wlo1"
-alias connect-peap="sudo wpa_supplicant -B -i wlo1 -c ~/ntupeap.conf && dhcp -d"
-alias home="ssh vik@zekt.me"
+alias wifi-up="sudo ifconfig $WIFIDEVICE up"
+alias wifi-down="sudo ifconfig $WIFIDEVICE down"
+alias connect="sudo iw dev $WIFIDEVICE connect"
+alias scan="sudo iw dev $WIFIDEVICE scan"
+alias dhcp="sudo dhclient $WIFIDEVICE"
+alias connect-peap="sudo wpa_supplicant -B -i $WIFIDEVICE -c ~/ntupeap.conf && dhcp -d"
+alias home="ssh vik@zekt.me -p 8787"
 alias ntuosc="ssh zekt@home.ntuosc.org -p 2200"
 alias ntuim="ssh zekt@ntu.im"
-alias dropbox="dropbox-cli"
 alias vi="nvim"
 alias vim="nvim"
 alias svim="sudo -E nvim"
@@ -115,10 +115,10 @@ alias svim="sudo -E nvim"
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-if [ "$TMUX" = ""  ]; then
-	tmux -2;
-else
+if [ -n "$TMUX" ]; then
 	powerline-config tmux setup;
+elif [ -z ${INSIDE_NAUTILUS_PYTHON+x} ]; then
+	tmux -2;
 fi
 
 ### Added by the Heroku Toolbelt

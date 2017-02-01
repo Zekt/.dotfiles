@@ -6,6 +6,8 @@ call plug#begin('~/.vim/plugged')
 " Colorshemes
 Plug 'Lucius'
 Plug 'Zenburn'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Plug 'severin-lemaignan/vim-minimap'
 
@@ -24,17 +26,20 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 " Indent
 "Plug 'nathanaelkane/vim-indent-guides'
 
 " Tools
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'euclio/vim-markdown-composer'
 Plug 'suan/vim-instant-markdown'
-Plug 'bling/vim-airline'
 " Plug 'Rykka/riv.vim'
 " Plug 'Rykka/InstantRst'
 Plug 'wakatime/vim-wakatime'
+Plug 'xuhdev/vim-latex-live-preview'
 
 call plug#end()
 
@@ -81,9 +86,9 @@ let g:syntastic_asm_checkers = ['nasm']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-
 " autocmd VimEnter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeTabsToggle<CR>
+let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinPos = "right"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -92,8 +97,15 @@ autocmd filetype python nnoremap <F5> :w <bar> exec '!python '.shellescape('%')<
 
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
+let g:livepreview_previewer = 'evince'
+
 sy on
 set number
+set relativenumber                                                              
+au FocusLost * :set norelativenumber                                            
+au FocusGained * :set relativenumber                                            
+autocmd InsertEnter * :set norelativenumber                                     
+autocmd InsertLeave * :set relativenumber
 set cursorline
 set ruler
 set tabstop=4
