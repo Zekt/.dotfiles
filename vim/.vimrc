@@ -18,6 +18,7 @@ Plug 'fatih/vim-go'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'php.vim'
+Plug 'othree/html5.vim'
 
 " Auto complete
 Plug 'mattn/emmet-vim'
@@ -50,8 +51,6 @@ set background=dark
 let g:lucius_no_term_bg = 1
 
 let g:minimap_highlight='Visual'
-
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -133,3 +132,7 @@ nnoremap j gj
 nnoremap k gk
 
 cmap w!! w !sudo tee > /dev/null %
+
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd Filetype html,javascript,json setlocal ts=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
