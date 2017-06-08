@@ -125,6 +125,7 @@ fi
 ### Added by the Heroku Toolbelt
 #export PATH="/usr/local/heroku/bin:$PATH"
 
+export PATH=$PATH:$GOPATH/bin:$HOME/.cabal/bin
 export PYTHONIOENCODING=UTF-8
 export TZ="Asia/Taipei"
 export LC_CTYPE="zh_TW.UTF-8"

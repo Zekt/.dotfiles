@@ -1,1 +1,1 @@
-/home/vik/.vimrc
+/home/vik/.dotfiles/vim/.vimrc

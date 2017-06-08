@@ -11,3 +11,7 @@
 	cma = commit -a
 	cmm = commit -m
 	l = log
+[merge]
+	tool = vimdiff
+[core]
+	editor = /usr/sbin/vim

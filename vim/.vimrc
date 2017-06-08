@@ -8,6 +8,7 @@ Plug 'Lucius'
 Plug 'Zenburn'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'digitaltoad/vim-pug'
 
 " Plug 'severin-lemaignan/vim-minimap'
 
@@ -19,6 +20,9 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'php.vim'
 Plug 'othree/html5.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'eagletmt/ghcmod-vim'
 
 " Auto complete
 Plug 'mattn/emmet-vim'
@@ -40,7 +44,9 @@ Plug 'suan/vim-instant-markdown'
 " Plug 'Rykka/riv.vim'
 " Plug 'Rykka/InstantRst'
 Plug 'wakatime/vim-wakatime'
-Plug 'xuhdev/vim-latex-live-preview'
+" Plug 'xuhdev/vim-latex-live-preview'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Twinside/vim-hoogle'
 
 call plug#end()
 
@@ -64,6 +70,8 @@ let g:indent_guides_start_level = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333 ctermbg=237
 
+let g:vim_markdown_frontmatter = 1
+
 " let vim_markdown_preview_github=1
 let g:vim_markdown_preview_browser="chromium"
 
@@ -81,6 +89,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_asm_checkers = ['nasm']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <F10> :SyntasticToggleMode <bar> :w <CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -93,6 +103,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 autocmd filetype c,cpp nnoremap <F5> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype python nnoremap <F5> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype haskell nnoremap <F1> :w <bar> exec 'GhcModType'<CR>
+autocmd filetype haskell nnoremap <F2> :w <bar> exec 'GhcModCheck'<CR>
+autocmd filetype haskell nnoremap <F3> :w <bar> exec 'GhcModLint'<CR>
+nnoremap <esc> :noh<return><esc>
+autocmd filetype haskell nnoremap <esc> :noh <bar> GhcModTypeClear<return><esc>
 
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
@@ -100,10 +115,10 @@ let g:livepreview_previewer = 'evince'
 
 sy on
 set number
-set relativenumber                                                              
-au FocusLost * :set norelativenumber                                            
-au FocusGained * :set relativenumber                                            
-autocmd InsertEnter * :set norelativenumber                                     
+set relativenumber
+au FocusLost * :set norelativenumber
+au FocusGained * :set relativenumber
+autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 set cursorline
 set ruler
@@ -134,5 +149,5 @@ nnoremap k gk
 cmap w!! w !sudo tee > /dev/null %
 
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-autocmd Filetype html,javascript,json setlocal ts=2 sw=2 expandtab
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype html,javascript,json,jade,pug setlocal ts=2 sw=2 expandtab
+autocmd Filetype python,haskell setlocal ts=4 sw=4 expandtab
