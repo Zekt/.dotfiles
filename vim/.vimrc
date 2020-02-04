@@ -4,8 +4,8 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " Colorshemes
-Plug 'Lucius'
-Plug 'Zenburn'
+Plug 'vim-scripts/Lucius'
+Plug 'vim-scripts/Zenburn'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'digitaltoad/vim-pug'
@@ -13,40 +13,47 @@ Plug 'digitaltoad/vim-pug'
 " Plug 'severin-lemaignan/vim-minimap'
 
 " Syntax
-Plug 'sudar/vim-arduino-syntax'
-Plug 'peterhoeg/vim-qml'
+" Plug 'sudar/vim-arduino-syntax'
+" Plug 'peterhoeg/vim-qml'
 Plug 'fatih/vim-go'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'php.vim'
+" Plug 'vim-scripts/php.vim'
 Plug 'othree/html5.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'eagletmt/ghcmod-vim'
+" Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 " Auto complete
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Valloric/YouCompleteMe'
-Plug 'davidhalter/jedi-vim'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'ervandew/supertab'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 " Indent
-"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Tools
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'euclio/vim-markdown-composer'
-Plug 'suan/vim-instant-markdown'
+" Plug 'suan/vim-instant-markdown'
 " Plug 'Rykka/riv.vim'
 " Plug 'Rykka/InstantRst'
 Plug 'wakatime/vim-wakatime'
 " Plug 'xuhdev/vim-latex-live-preview'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Twinside/vim-hoogle'
+Plug 'derekelkins/agda-vim'
 
 call plug#end()
 
@@ -58,42 +65,46 @@ let g:lucius_no_term_bg = 1
 
 let g:minimap_highlight='Visual'
 
+let g:agda_extraincpaths = ["/home/vik/agda-stdlib-1.1/src"]
+" let maplocalleader = ","
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_auto_colors = 0
-" set ts=4 sw=4 noet
-let g:indent_guides_start_level = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333 ctermbg=237
-
-let g:vim_markdown_frontmatter = 1
-
-" let vim_markdown_preview_github=1
-let g:vim_markdown_preview_browser="chromium"
-
-let g:pydiction_location = '/home/vik/.vim/bundle/Pydiction/complete-dict'
-let g:jedi#completions_enabled = 1
-let g:jedi#force_py_version = 3
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_asm_checkers = ['nasm']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <F10> :SyntasticToggleMode <bar> :w <CR>
+" 
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
+" let g:indent_guides_auto_colors = 0
+" " set ts=4 sw=4 noet
+" let g:indent_guides_start_level = 1
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333 ctermbg=237
+" 
+" let g:vim_markdown_frontmatter = 1
+" 
+" " let vim_markdown_preview_github=1
+" let g:vim_markdown_preview_browser="chromium"
+" 
+" let g:pydiction_location = '/home/vik/.vim/bundle/Pydiction/complete-dict'
+" let g:jedi#completions_enabled = 1
+" let g:jedi#force_py_version = 3
+" 
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_asm_checkers = ['nasm']
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+" nnoremap <F10> :SyntasticToggleMode <bar> :w <CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper', '--lsp'] }
 
 " autocmd VimEnter * NERDTree
 map <C-n> :NERDTreeTabsToggle<CR>
@@ -148,6 +159,10 @@ nnoremap k gk
 
 cmap w!! w !sudo tee > /dev/null %
 
+au BufNewFile,BufRead *.agda setf agda
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype html,javascript,json,jade,pug setlocal ts=2 sw=2 expandtab
 autocmd Filetype python,haskell setlocal ts=4 sw=4 expandtab
+
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
